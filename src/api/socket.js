@@ -1,5 +1,7 @@
-import io from "socket.io-client";
+import { io } from "socket.io-client";
 
-export const socket = io.connect("https://uno-backend-web.onrender.com");
+export const socket = io(import.meta.env.VITE_API_URL, {
+  transports: ["websocket"],
+});
 
 socket.reconnectionAttempts = 3;
